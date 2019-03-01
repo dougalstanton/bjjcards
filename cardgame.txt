@@ -1,17 +1,32 @@
-VISUAL=G, 10, 10
+﻿[takedowns0]=1
+[takedownsN]=5
+
+[transitions0]=6
+[transitionsN]=10
+
+[submissions0]=11
+[submissionsN]=15
+
+[allcards]=[takedowns0]-[submissionsN]
+
+
 FONT=Times New Roman,18,,#000000
-TEXT=1,"Grips + Posture",0%,5%,100%,10%,CENTER,CENTER
+TEXT=[allcards],"Control1 + Control 2",0%,5%,100%,10%,CENTER,CENTER
 
-ELLIPSE=1,-5%,20%,9.917%,6.972%,#000000,EMPTY,0.05
-ELLIPSE=1,-5%,35%,9.917%,6.972%,#000000,EMPTY,0.05
-ELLIPSE=1,-5%,50%,9.917%,6.972%,#000000,EMPTY,0.05
-ELLIPSE=1,-5%,65%,9.917%,6.972%,#000000,EMPTY,0.05
-ELLIPSE=1,-5%,80%,9.917%,6.972%,#000000,EMPTY,0.05
 
-ELLIPSE=1,95%,20%,9.917%,6.972%,#000000,EMPTY,0.05
-ELLIPSE=1,95%,35%,9.917%,6.972%,#000000,EMPTY,0.05
-ELLIPSE=1,95%,50%,9.917%,6.972%,#000000,EMPTY,0.05
-ELLIPSE=1,95%,65%,9.917%,6.972%,#000000,EMPTY,0.05
-ELLIPSE=1,95%,80%,9.917%,6.972%,#000000,EMPTY,0.05
 
-ENDVISUAL
+[leftside]=[transitions0]-[submissionsN]
+[rightside]=[takedowns0]-[submissionsN]
+
+ELLIPSE=[leftside],-.5,20%,1,1,#000000,EMPTY,0.05
+ELLIPSE=[leftside],-.5,35%,1,1,#000000,EMPTY,0.05
+ELLIPSE=[leftside],-.5,50%,1,1,#000000,EMPTY,0.05
+ELLIPSE=[leftside],-.5,65%,1,1,#000000,EMPTY,0.05
+ELLIPSE=[leftside],-.5,80%,1,1,#000000,EMPTY,0.05
+
+ELLIPSE=[rightside],5.5,20%,1,1,#000000,EMPTY,0.05
+ELLIPSE=[rightside],5.5,35%,1,1,#000000,EMPTY,0.05
+ELLIPSE=[rightside],5.5,50%,1,1,#000000,EMPTY,0.05
+ELLIPSE=[rightside],5.5,65%,1,1,#000000,EMPTY,0.05
+ELLIPSE=[rightside],5.5,80%,1,1,#000000,EMPTY,0.05
+
