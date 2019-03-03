@@ -13,20 +13,31 @@
 FONT=Times New Roman,18,,#000000
 TEXT=[allcards],"Control1 + Control 2",0%,5%,100%,10%,CENTER,CENTER
 
+[y_turtle]=1.5
+[y_side]=3
+[y_mount]=4.5
+[y_guard]=6
+[y_back]=7.5
 
+[col_turtle]=#800080
+[col_side]=#008000
+[col_mount]=#808080
+[col_guard]=#FF5800
+[col_back]=#000080
 
-[leftside]=[transitions0]-[submissionsN]
+[leftside]=[takedowns0]-[submissionsN]
 [rightside]=[takedowns0]-[submissionsN]
 
-ELLIPSE=[leftside],-.5,20%,1,1,#000000,EMPTY,0.05
-ELLIPSE=[leftside],-.5,35%,1,1,#000000,EMPTY,0.05
-ELLIPSE=[leftside],-.5,50%,1,1,#000000,EMPTY,0.05
-ELLIPSE=[leftside],-.5,65%,1,1,#000000,EMPTY,0.05
-ELLIPSE=[leftside],-.5,80%,1,1,#000000,EMPTY,0.05
+ELLIPSE=[leftside],-.5,[y_turtle],1,1,#000000,[col_turtle],0
+ELLIPSE=[leftside],-.5,[y_side],1,1,#000000,EMPTY,0.05
+ELLIPSE=[leftside],-.5,[y_mount],1,1,#000000,EMPTY,0.05
+ELLIPSE=[leftside],-.5,[y_guard],1,1,#000000,EMPTY,0.05
+ELLIPSE=[leftside],-.5,[y_back],1,1,#000000,EMPTY,0.05
 
-ELLIPSE=[rightside],5.5,20%,1,1,#000000,EMPTY,0.05
-ELLIPSE=[rightside],5.5,35%,1,1,#000000,EMPTY,0.05
-ELLIPSE=[rightside],5.5,50%,1,1,#000000,EMPTY,0.05
-ELLIPSE=[rightside],5.5,65%,1,1,#000000,EMPTY,0.05
-ELLIPSE=[rightside],5.5,80%,1,1,#000000,EMPTY,0.05
+ELLIPSE=[rightside],5.5,[y_turtle],1,1,#000000,EMPTY,0.05
+ELLIPSE=[rightside],5.5,[y_side],1,1,#000000,EMPTY,0.05
+ELLIPSE=[rightside],5.5,[y_mount],1,1,#000000,EMPTY,0.05
+ELLIPSE=[rightside],5.5,[y_guard],1,1,#000000,[col_guard],0
+ELLIPSE=[rightside],5.5,[y_back],1,1,#000000,EMPTY,0.05
 
+BEZIER=[allcards],0.5,[y_turtle]+.5,3,[y_turtle]+.5,3,[y_guard]+.5,5.5,[y_guard]+.5,[col_guard][col_turtle]@45,0.05
