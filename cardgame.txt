@@ -1,43 +1,25 @@
-﻿[takedowns0]=1
-[takedownsN]=5
-
-[transitions0]=6
-[transitionsN]=10
-
-[submissions0]=11
-[submissionsN]=15
-
-[allcards]=[takedowns0]-[submissionsN]
-
-
-FONT=Times New Roman,18,,#000000
-TEXT=[allcards],"Control1 + Control 2",0%,5%,100%,10%,CENTER,CENTER
-
+﻿
 [y_turtle]=1.5
-[y_side]=3
+[y_sidecontrol]=3
 [y_mount]=4.5
 [y_guard]=6
 [y_back]=7.5
 
 [col_turtle]=#800080
-[col_side]=#008000
+[col_sidecontrol]=#008000
 [col_mount]=#808080
 [col_guard]=#FF5800
 [col_back]=#000080
 
-[leftside]=[takedowns0]-[submissionsN]
-[rightside]=[takedowns0]-[submissionsN]
+LINK=cards.csv
 
-ELLIPSE=[leftside],-.5,[y_turtle],1,1,#000000,[col_turtle],0
-ELLIPSE=[leftside],-.5,[y_side],1,1,#000000,EMPTY,0.05
-ELLIPSE=[leftside],-.5,[y_mount],1,1,#000000,EMPTY,0.05
-ELLIPSE=[leftside],-.5,[y_guard],1,1,#000000,EMPTY,0.05
-ELLIPSE=[leftside],-.5,[y_back],1,1,#000000,EMPTY,0.05
+FONT=Times New Roman,18,,#000000
+TEXT=[1-{(TYPE)}],[EntryPosition],0%,5%,100%,10%,CENTER,CENTER
 
-ELLIPSE=[rightside],5.5,[y_turtle],1,1,#000000,EMPTY,0.05
-ELLIPSE=[rightside],5.5,[y_side],1,1,#000000,EMPTY,0.05
-ELLIPSE=[rightside],5.5,[y_mount],1,1,#000000,EMPTY,0.05
-ELLIPSE=[rightside],5.5,[y_guard],1,1,#000000,[col_guard],0
-ELLIPSE=[rightside],5.5,[y_back],1,1,#000000,EMPTY,0.05
+ELLIPSE=[1-{(TYPE)}],5.5,[y_[exit]],1,1,#000000,[col_[exit]],0
+if=[Type]="Transition"
+ELLIPSE=[1-{(TYPE)}],-.5,[y_[entry]],1,1,#000000,[col_[entry]],0
+BEZIER=[1-{(TYPE)}],0.5,[y_[entry]]+.5,3,[y_[entry]]+.5,3,[y_[exit]]+.5,5.5,[y_[exit]]+.5,#000000,0.5
+endif
 
-BEZIER=[allcards],0.5,[y_turtle]+.5,3,[y_turtle]+.5,3,[y_guard]+.5,5.5,[y_guard]+.5,[col_guard][col_turtle]@45,0.05
+zoom=50
