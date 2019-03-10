@@ -1,9 +1,15 @@
 ﻿
-[y_turtle]=1.5
-[y_sidecontrol]=3
-[y_mount]=4.5
-[y_guard]=6
-[y_back]=7.5
+[y_turtle]=1
+[y_sidecontrol]=2.5
+[y_mount]=4
+[y_guard]=5.5
+[y_back]=7
+
+[y_offset_turtle]=[y_turtle]+0.5
+[y_offset_sidecontrol]=[y_sidecontrol]+0.5
+[y_offset_mount]=[y_mount]+0.5
+[y_offset_guard]=[y_guard]+0.5
+[y_offset_back]=[y_back]+0.5
 
 [col_turtle]=#800080
 [col_sidecontrol]=#008000
@@ -11,15 +17,78 @@
 [col_guard]=#FF5800
 [col_back]=#000080
 
-LINK=cards.csv
+LINK=1_-tC8vlRXYQeObp8ZRAEktZXmkWtm_2umrHMTLcdFww
 
+[ALL]=[1-{(TYPE)}]
+
+;; Name of position
 FONT=Times New Roman,18,,#000000
-TEXT=[1-{(TYPE)}],[EntryPosition],0%,5%,100%,10%,CENTER,CENTER
+IF=[EntryPosition]="Bottom"
+TEXT=[ALL],[NAME],1.2,8,7,1,LEFT,CENTER
+ELSEIF=[EntryPosition]="Top"
+TEXT=[ALL],[NAME],1.2,0,7,1,LEFT,CENTER
+ELSE
+TEXT=[ALL],[NAME],1.2,4,7,1,LEFT,CENTER
+ENDIF
 
-ELLIPSE=[1-{(TYPE)}],5.5,[y_[exit]],1,1,#000000,[col_[exit]],0
-if=[Type]="Transition"
-ELLIPSE=[1-{(TYPE)}],-.5,[y_[entry]],1,1,#000000,[col_[entry]],0
-BEZIER=[1-{(TYPE)}],0.5,[y_[entry]]+.5,3,[y_[entry]]+.5,3,[y_[exit]]+.5,5.5,[y_[exit]]+.5,#000000,0.5
+;; Pressure/Balance value
+FONT=Arial,22,T,#808080
+IF=[TYPE]<>"Takedown"
+IF=[EntryPosition]="Bottom"
+RECTANGLE=[ALL],0.15,8.12,0.75,0.75,#A0A0A0,EMPTY,0.05
+TEXT=[ALL],{1d5},0.1,8.1,0.8,0.8,CENTER
+ELSE
+RECTANGLE=[ALL],0.15,0.12,0.75,0.75,#A0A0A0,EMPTY,0.05
+TEXT=[ALL],{1d5},0.1,0.1,0.8,0.8,CENTER
+ENDIF
+ENDIF
+
+
+[pos1x]=0.5
+[pos1y]=[y_offset_[ENTRY]]
+[handle1x]=3
+[handle1y]=[y_offset_[ENTRY]]
+
+[pos2x]=5.5
+[pos2y]=[y_offset_[EXIT]]
+[handle2x]=3
+[handle2y]=[y_offset_[EXIT]]
+
+[gradient]=#000000#FFFFFF#FFFFFF#000000@0
+
+IF=[TYPE]<>"Takedown"
+;; Left hand side blobs
+ELLIPSE=[ALL],-0.5,[y_[entry]],1,1,#FFFFFF,[col_[entry]],0.1
+ELLIPSE=[ALL],-0.5,[y_[entry]],1,1,#000000,EMPTY,0
 endif
 
-zoom=50
+;; Cost to submit from here
+FONT=Arial,11,T,#FFFFFF
+TEXT=[ALL],[SubmissionCost],0.05,[y_[entry]],0.25,1,LEFT,CENTER
+
+IF=[TYPE]<>"Submission"
+;; Right hand side blobs
+ELLIPSE=[ALL],5.5,[y_[exit]],1,1,#FFFFFF,[col_[exit]],0.1
+ELLIPSE=[ALL],5.5,[y_[exit]],1,1,#000000,EMPTY,0
+endif
+
+;; New position indicator in exit blob
+IF=[EntryPosition]<>[ExitPosition]
+FONT=Arial,11,BT,#FFFFFF
+TEXT=[ALL],[ExitPosition:1,1],5.7,[y_[exit]],0.25,1,RIGHT,CENTER
+endif
+
+if=[Type]="Transition"
+;; Curved lines connecting left to right
+BEZIER=[ALL],[pos1x],[pos1y],[handle1x],[handle1y],[handle2x],[handle2y],[pos2x],[pos2y],[gradient],0.01
+endif
+
+
+;ELLIPSE=[1-{(TYPE)}],[pos1x],[pos1y],[pos2x],[pos2y],#808080,#FFFFFF,0.1
+;[midpoint]=[pos2y]-[pos1y]
+;TEXT=[1-{(TYPE)}],[NAME],[pos1x],[pos1y],5,2,CENTER,CENTER
+
+
+;zoom=50
+
+
